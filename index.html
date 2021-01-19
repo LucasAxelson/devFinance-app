@@ -7,51 +7,87 @@
     <title>dev.finance$</title>
     <!-- CSS Style Sheets -->
     <link rel="stylesheet" href="/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <h1>dev.finance$</h1>
+    <header>
+        <h1 id="logo">dev.finance$</h1>
+    </header>
 
-    <h2>Balance</h2>
-    <h3>Income</h3>
-    <p>£ 5.000,00</p>
+    <main class="container">
+        <section id="balance">
+            <h2>Balance</h2>
 
-    <h3>Expenses</h3>
-    <p>£ 2.000,00</p>
+            <div class="card">
+                <h3>Income</h3>
+                <p>£ 2.500,00</p>
+            </div>
 
-    <h3>Total</h3>
-    <p>£ 3.000,00</p>
+            <div class="card">
+                <h3>Expenses</h3>
+                <p>£ 1.500,00</p>
+            </div>
 
+            <div class="card total">
+                <h3>Total</h3>
+                <p>£ 1.000,00</p>
+            </div>
+        </section>
 
-    <h2>Transactions</h2>
+        <section id="transaction">
+            <h2>Transactions</h2>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Description</th>
-                <th>Value</th>
-                <th>Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Energy</td>
-                <td>£ 50,00</td>
-                <td>23/01/2021</td>
-            </tr>
-            <tr>
-                <td>Gas</td>
-                <td>£ 25,00</td>
-                <td>21/01/2021</td>
-            </tr>
-            <tr>
-                <td>Internet</td>
-                <td>£ 90,00</td>
-                <td>10/01/2021</td>
-            </tr>
-        </tbody>
-    </table>
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Value</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="description">Energy</td>
+                        <td class="expense">- £ 50,00</td>
+                        <td class="date">23/01/2021</td>
+                    </tr>
+                    <tr>
+                        <td class="description">Salary</td>
+                        <td class="income">£ 2.500,00</td>
+                        <td class="date">02/01/2021</td>
+                    </tr>
+                    <tr>
+                        <td class="description">Gas</td>
+                        <td class="expense">- £ 25,00</td>
+                        <td class="date">21/01/2021</td>
+                    </tr>
+                    <tr>
+                        <td class="description">Internet</td>
+                        <td class="expense">- £ 190,00</td>
+                        <td class="date">10/01/2021</td>
+                    </tr>
+                    <tr>
+                        <td class="description">Food</td>
+                        <td class="expense">- £ 220,00</td>
+                        <td class="date">18/01/2021</td>
+                    </tr>
+                    <tr>
+                        <td class="description">Others</td>
+                        <td class="expense">- £ 685,00</td>
+                        <td class="date">10/01/2021</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>dev.finance$</p>
+    </footer>
 
     <script src="/app.js"></script>
 </body>
