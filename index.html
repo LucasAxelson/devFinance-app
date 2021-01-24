@@ -14,25 +14,34 @@
 <body>
 
     <header>
-        <h1 id="logo">dev.finance$</h1>
+        <img src="/assets/logo.svg" alt="Logo Dev Finance">
     </header>
 
     <main class="container">
         <section id="balance">
-            <h2>Balance</h2>
+            <h2 class="sr-only">Balance</h2>
 
             <div class="card">
-                <h3>Income</h3>
+                <h3>
+                    <span>Income</span>
+                    <img src="/assets/income.svg" alt="Income Icon">
+                </h3>
                 <p>£ 2.500,00</p>
             </div>
 
             <div class="card">
-                <h3>Expenses</h3>
+                <h3>
+                    <span>Expense</span>
+                    <img src="/assets/expense.svg" alt="Expense Icon">
+                </h3>
                 <p>£ 1.500,00</p>
             </div>
 
             <div class="card total">
-                <h3>Total</h3>
+                <h3>
+                    <span>Total</span>
+                    <img src="/assets/total.svg" alt="Total Icon">
+                </h3>
                 <p>£ 1.000,00</p>
             </div>
         </section>
@@ -40,11 +49,13 @@
         <section id="transaction">
             <h2>Transactions</h2>
 
+            <a href="#" class="button new">+ New Transaction</a>
+
             <table id="data-table">
                 <thead>
                     <tr>
                         <th>Description</th>
-                        <th>Value</th>
+                        <th>Amount</th>
                         <th>Date</th>
                     </tr>
                 </thead>
@@ -52,32 +63,37 @@
                     <tr>
                         <td class="description">Energy</td>
                         <td class="expense">- £ 50,00</td>
-                        <td class="date">23/01/2021</td>
+                        <td class="date">13/02/2021</td>
                     </tr>
                     <tr>
                         <td class="description">Salary</td>
                         <td class="income">£ 2.500,00</td>
-                        <td class="date">02/01/2021</td>
+                        <td class="date">11/02/2021</td>
                     </tr>
                     <tr>
                         <td class="description">Gas</td>
                         <td class="expense">- £ 25,00</td>
-                        <td class="date">21/01/2021</td>
+                        <td class="date">02/02/2021</td>
                     </tr>
                     <tr>
                         <td class="description">Internet</td>
                         <td class="expense">- £ 190,00</td>
-                        <td class="date">10/01/2021</td>
+                        <td class="date">13/01/2021</td>
+                    </tr>
+                    <tr>
+                        <td class="description">Transfer from AXELSON/L</td>
+                        <td class="income"> £ 500,00</td>
+                        <td class="date">07/01/2021</td>
                     </tr>
                     <tr>
                         <td class="description">Food</td>
                         <td class="expense">- £ 220,00</td>
-                        <td class="date">18/01/2021</td>
+                        <td class="date">03/01/2021</td>
                     </tr>
                     <tr>
                         <td class="description">Others</td>
                         <td class="expense">- £ 685,00</td>
-                        <td class="date">10/01/2021</td>
+                        <td class="date">29/12/2020</td>
                     </tr>
 
                 </tbody>
