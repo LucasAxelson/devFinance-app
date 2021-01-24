@@ -47,7 +47,7 @@
         </section>
 
         <section id="transaction">
-            <h2>Transactions</h2>
+            <h2 class="sr-only">Transactions</h2>
 
             <a href="#" class="button new">+ New Transaction</a>
 
@@ -57,6 +57,7 @@
                         <th>Description</th>
                         <th>Amount</th>
                         <th>Date</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,42 +65,77 @@
                         <td class="description">Energy</td>
                         <td class="expense">- £ 50,00</td>
                         <td class="date">13/02/2021</td>
+                        <td>
+                            <img src="/assets/minus.svg" alt="Remove Transaction">
+                        </td>
                     </tr>
                     <tr>
                         <td class="description">Salary</td>
-                        <td class="income">£ 2.500,00</td>
+                        <td class="income">£ 2.000,00</td>
                         <td class="date">11/02/2021</td>
+                        <td>
+                            <img src="/assets/minus.svg" alt="Remove Transaction">
+                        </td>
                     </tr>
                     <tr>
                         <td class="description">Gas</td>
                         <td class="expense">- £ 25,00</td>
                         <td class="date">02/02/2021</td>
+                        <td>
+                            <img src="/assets/minus.svg" alt="Remove Transaction">
+                        </td>
                     </tr>
                     <tr>
                         <td class="description">Internet</td>
                         <td class="expense">- £ 190,00</td>
                         <td class="date">13/01/2021</td>
+                        <td>
+                            <img src="/assets/minus.svg" alt="Remove Transaction">
+                        </td>
                     </tr>
                     <tr>
                         <td class="description">Transfer from AXELSON/L</td>
                         <td class="income"> £ 500,00</td>
                         <td class="date">07/01/2021</td>
+                        <td>
+                            <img src="/assets/minus.svg" alt="Remove Transaction">
+                        </td>
                     </tr>
                     <tr>
                         <td class="description">Food</td>
                         <td class="expense">- £ 220,00</td>
                         <td class="date">03/01/2021</td>
+                        <td>
+                            <img src="/assets/minus.svg" alt="Remove Transaction">
+                        </td>
                     </tr>
                     <tr>
                         <td class="description">Others</td>
                         <td class="expense">- £ 685,00</td>
                         <td class="date">29/12/2020</td>
+                        <td>
+                            <img src="/assets/minus.svg" alt="Remove Transaction">
+                        </td>
                     </tr>
 
                 </tbody>
             </table>
         </section>
     </main>
+
+    <div class="modal-overlay active">
+        <div class="modal">
+            <div id="form">
+                <h2>New Transaction</h2>
+                <form action="/new">
+                    <div class="input-group">
+                        <label for="description"></label>
+                        <input type="text" id="description" name="description" placeholder="John Smith">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>dev.finance$</p>
