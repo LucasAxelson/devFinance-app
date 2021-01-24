@@ -49,7 +49,7 @@
         <section id="transaction">
             <h2 class="sr-only">Transactions</h2>
 
-            <a href="#" class="button new">+ New Transaction</a>
+            <a href="#" id="newTransaction" class="button new">+ New Transaction</a>
 
             <table id="data-table">
                 <thead>
@@ -123,15 +123,33 @@
         </section>
     </main>
 
-    <div class="modal-overlay active">
-        <div class="modal">
+    <div class="modal-overlay">
+        <div class="modal" id="modal-box">
             <div id="form">
                 <h2>New Transaction</h2>
                 <form action="/new">
+
                     <div class="input-group">
-                        <label for="description"></label>
-                        <input type="text" id="description" name="description" placeholder="John Smith">
+                        <label class="sr-only" for="description">Description</label>
+                        <input type="text" id="description" name="description" placeholder="Description">
                     </div>
+
+                    <div class="input-group">
+                        <label class="sr-only" for="amount">Amount</label>
+                        <input type="number" step="0.01" id="amount" name="amount" placeholder="0,00">
+                        <small class="help"> Use the - (minus) sign for expenses and , (comma) for decimals.</small>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="sr-only" for="date">Description</label>
+                        <input type="date" id="date" name="date" placeholder="Date">
+                    </div>
+
+                    <div class="input-group actions">
+                        <a href="#" id="closeTransaction" class="button cancel">Cancel</a>
+                        <button>Save</button>
+                    </div>
+
                 </form>
             </div>
         </div>
