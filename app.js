@@ -4,59 +4,110 @@ const Modal = {
     toggle() {
         // Toggle Modal
         // Add or Remove active class to Modal
-        const modalOverlay = document.querySelector('.modal-overlay').classList.toggle("active");
+        const modalOverlay = document
+        .querySelector('.modal-overlay')
+        .classList.toggle("active")
     }
 }
 
-const newTransaction = document.querySelector('#newTransaction');
-const closeTransaction = document.querySelector('#closeTransaction');
+const newTransaction = document.querySelector('#newTransaction')
+const closeTransaction = document.querySelector('#closeTransaction')
 
 newTransaction.addEventListener('click', function () {
-    Modal.toggle();
+    Modal.toggle()
 });
 
-closeTransaction.addEventListener('click', function () {
-    Modal.toggle();
+closeTransaction.addEventListener('click', function () { 
+    Modal.toggle()
 });
 
 // Transaction ================================
 
-// const tBody = document.querySelector('#tBody');
-// const form = document.querySelector('#modalForm');
+const transactions = [
+    {
+        id: 1,
+        description: 'Energy',
+        amount: -5000,
+        date: '23/01/2021',
+    },
+    {
+        id: 2,
+        description: 'Salary',
+        amount: 200000,
+        date: '24/01/2021',
+    },
+    {
+        id: 3,
+        description: 'Gas',
+        amount: -2500,
+        date: '27/01/2021',
+    },
+    {
+        id: 4,
+        description: 'Internet',
+        amount: -19000,
+        date: '30/01/2021',
+    },
+]
 
+const Transaction = {
+    income (){
+        // Count Income
 
-// form.addEventListener('click', function (e) {
-//     e.preventDefault();
+    },
+    expenses (){
+        // Count Expenses
 
-//     const inputDesc = document.querySelector('#description');
-//     const inputAmount = document.querySelector('#amount');
-//     const inputDate = document.querySelector('#date');
+    },
+    total (){
+        // Income - Expenses
 
-//     createTransaction(inputDesc.value, inputAmount.value, inputDate.value);
-// });
+    }
+}
 
-// const createTransaction = (inputDesc, inputAmount, inputDate) => {
-//     let row = document.createElement('tr');
-//     let desc = document.createElement('td');
-//     desc.classList.add('description');
-//     let amount = document.createElement('td');
-//     let date = document.createElement('td');
-//     date.classList.add('date');
+const DOM = {
+    transactionsContainer: document.querySelector(`#data-table tbody`),
+    addTransaction(transaction, index) {
+        const tr = document.createElement('tr')
+        tr.innerHTML = DOM.innerHTMLTransaction(transaction)
+        DOM.transactionsContainer.appendChild(tr)
+    },
+    innerHTMLTransaction(transaction){
+        const CSSclass = transaction.amount > 0 ? "income" : "expense"
+        const amount = Utils.formatCurrency(transaction.amount)
 
-//     desc.value = inputDesc.value;
-//     amount.value = inputAmount.value;
-//     date.value = inputDate.value;
+        const html = `              
+        <tr>
+            <td class="description">${transaction.description}</td>
+            <td class="${CSSclass}">${amount}</td>
+            <td class="date">${transaction.date}</td>
+            <td>
+                <img src="/assets/minus.svg" alt="Remove Transaction">
+            </td>
+        </tr> 
+        `
 
-//     // if (amount.value < 0) {
-//     //     amount.classList.add('expense');
-//     // } else {
-//     //     amount.classList.add('income');
-//     // };
+        return html
+    }
+    updateBalance() {
+        document.getElementById
+    }
+}
 
-//     row.append(desc);
-//     row.append(amount);
-//     row.append(date);
-//     tBody.append(row);
-// };
+const Utils = {
+    formatCurrency(value) {
+        const signal = Number(value) < 0 ? "-" : ""
+        value = String(value).replace(/\D/g, "")
+        value = Number(value) / 100
+        value = value.toLocaleString("en", {
+            style: "currency",
+            currency: "GBP",
+        })
 
+        return signal + value
+    }
+}
 
+transactions.forEach(function(transaction){
+    DOM.addTransaction(transaction)    
+})
