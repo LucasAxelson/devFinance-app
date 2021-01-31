@@ -1,25 +1,26 @@
 // Modal ================================
 
 const Modal = {
+    new: document.querySelector('#newTransaction'),
+    close: document.querySelector('#closeTransaction'),
     toggle() {
         // Toggle Modal
         // Add or Remove active class to Modal
         const modalOverlay = document
         .querySelector('.modal-overlay')
         .classList.toggle("active")
-    }
+    },
 }
 
-const newTransaction = document.querySelector('#newTransaction')
-const closeTransaction = document.querySelector('#closeTransaction')
-
-newTransaction.addEventListener('click', function () {
+Modal.new.addEventListener('click', function () {
     Modal.toggle()
-});
+})
 
-closeTransaction.addEventListener('click', function () { 
+Modal.close.addEventListener('click', function () { 
     Modal.toggle()
-});
+})
+
+// Error-Display ================================
 
 const Errors = {
     message() {
@@ -31,31 +32,23 @@ const Errors = {
     }
 }
 
+// Storage ================================
+
+const Storage = {
+    get() {
+        return JSON.parse(localStorage.getItem("dev.finances:transactions")) ||
+        []
+    },
+    set(transactions) {
+        localStorage.setItem("dev.finances:transactions",
+        JSON.stringify(transactions))
+    }
+}
+
 // Transaction ================================
 
 const Transaction = {
-    all: [
-        {
-            description: 'Energy',
-            amount: -5000,
-            date: '23/01/2021',
-        },
-        {
-            description: 'Salary',
-            amount: 200000,
-            date: '24/01/2021',
-        },
-        {
-            description: 'Gas',
-            amount: -2500,
-            date: '27/01/2021',
-        },
-        {
-            description: 'Internet',
-            amount: -19000,
-            date: '30/01/2021',
-        },
-    ],
+    all: Storage.get(),
 
     add(transaction) {
         Transaction.all.push(transaction)
@@ -101,11 +94,13 @@ const DOM = {
 
     addTransaction(transaction, index) {
         const tr = document.createElement('tr')
-        tr.innerHTML = DOM.innerHTMLTransaction(transaction)
+        tr.innerHTML = DOM.innerHTMLTransaction(transaction, index)
+        tr.dataset.index = index
+
         DOM.transactionsContainer.appendChild(tr)
     },
 
-    innerHTMLTransaction(transaction){
+    innerHTMLTransaction(transaction, index){
         const CSSclass = transaction.amount > 0 ? "income" : "expense"
         const amount = Utils.formatCurrency(transaction.amount)
 
@@ -115,7 +110,7 @@ const DOM = {
             <td class="${CSSclass}">${amount}</td>
             <td class="date">${transaction.date}</td>
             <td>
-                <img src="/assets/minus.svg" alt="Remove Transaction">
+                <img onclick="Transaction.remove(${index})" src="/assets/minus.svg" alt="Remove Transaction">
             </td>
         </tr> 
         `
@@ -141,7 +136,7 @@ const DOM = {
 
 const Utils = {
     formatAmount(value) {
-        value = Number(value) * 100
+        value = Number(value.replace(/\.\./g, "")) * 100
 
         return value
     },
@@ -158,7 +153,7 @@ const Utils = {
     },
     formatDate(date) {
         const splittedDate = date.split("-")
-        return `${splittedDate[2]}/${splittedData[1]}/${splittedDate[3]}`
+        return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`
     }
 }
 
@@ -197,8 +192,14 @@ const Form = {
         }
     },
 
-    saveTransaction() {
+    saveTransaction(transaction) {
         Transaction.add(transaction)
+    },
+
+    clearFields() {
+        Form.description.value = ""
+        Form.amount.value = ""
+        Form.date.value = ""
     },
 
     submit(event) {
@@ -206,8 +207,10 @@ const Form = {
         try {
             Form.validateFields()
             const transaction = Form.formatValues()
-            saveTransaction(transaction)
+            Form.saveTransaction(transaction)
             Form.clearFields()
+            Modal.toggle()
+            App.reload()
         } 
         catch (error) {
             Errors.toggle()
@@ -218,11 +221,10 @@ const Form = {
 
 const App = {
     init() {
-        Transaction.all.forEach(transaction => {
-            DOM.addTransaction(transaction)    
-        })
-        
+        Transaction.all.forEach(DOM.addTransaction)        
         DOM.updateBalance()
+        
+        Storage.set(Transaction.all)
     },
     reload() {
         DOM.clearTransactions()

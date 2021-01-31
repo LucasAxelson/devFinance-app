@@ -234,6 +234,7 @@ td.expense {
 
         opacity: 0;
         visibility: hidden;
+        z-index: 999;
     }
 
     .modal-overlay.active {
@@ -246,7 +247,7 @@ td.expense {
         padding: 2.5rem;
 
         position: relative;
-        z-index: 999;
+        z-index: 1;
     }
 
     #errorMessage {
