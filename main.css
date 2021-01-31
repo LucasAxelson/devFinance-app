@@ -243,11 +243,25 @@ td.expense {
 
     .modal {
         background-color: #F0F2f5;
-        padding: 2.4rem;
+        padding: 2.5rem;
 
         position: relative;
         z-index: 999;
     }
+
+    #errorMessage {
+        color: red;
+        border: 2px solid red;
+        text-align: center;
+        visibility: hidden;
+    }
+
+    #errorMessage.active {
+        margin: 1rem;
+        padding: 0.5rem;
+        visibility: visible;
+    }
+
 
 /* Form ========================= */
 

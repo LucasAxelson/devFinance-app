@@ -70,7 +70,7 @@
         <div class="modal" id="modal-box">
             <div id="form">
                 <h2>New Transaction</h2>
-                <form id="modalForm" action="/new">
+                <form action="" onsubmit="Form.submit(event)">
 
                     <div class="input-group">
                         <label class="sr-only" for="description">Description</label>
@@ -91,6 +91,10 @@
                     <div class="input-group actions">
                         <a href="#" id="closeTransaction" class="button cancel">Cancel</a>
                         <button>Save</button>
+                    </div>
+
+                    <div id="errorMessage">
+
                     </div>
 
                 </form>
